@@ -1,0 +1,163 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Brush Script MT', Cursive;
+    background-color:  #E5F1FF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px 0;
+}
+h1 a{
+    text-decoration:none;
+    color: #154580;
+}
+header h1{
+    font-size: 2em;
+}
+header h1 img{
+    vertical-align: middle;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+nav li {
+    margin-left: 50px;
+}
+nav a {
+    text-decoration: none;
+    color: #154580;
+    font-weight: bold;
+}
+nav a:hover {
+  background-color: white;
+  color: black;
+}
+
+main {
+    width: 100%;
+    max-width:1200px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.mainSection h2{
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+.mainSection p {
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    padding: 0 15px;
+}
+button {
+    background-color: #154580;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.conheca h1{
+    text-align: center;
+    font-size: 2.5em;
+}
+.conheca p{
+    text-align: center;
+    font-size: 1.5em;
+}
+.socrates {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
+.socrates img {
+    width: 400px;
+    height: auto;
+    margin-left: 20px;
+}
+.socrates blockquote {
+    text-align: right;
+    font-style: italic;
+    padding: 10px;
+    border-left: 2px solid #ccc;
+}
+.socrates blockquote footer {
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+.conheca h2{
+    text-align:center;
+    font-size:2em;
+}
+.paragrafo1{
+    width: 1180px;
+    margin: 20px auto;
+    padding: 10px;
+}
+.conheca .list{
+    display:flex;
+    margin-left: 50px;
+    list-style-position: inside;
+    font-size:25px;
+    width: 1150px;
+}
+hr {
+    width: 100%;
+    max-width:1300px;
+    height: 2px;
+    background-color: black;
+    border: none;
+    margin: 30px auto;
+}
+
+.beneficio h1{
+   text-align:center;
+   font-size:2em;
+}
+.beneParagrafo{
+        font-size: 30px;
+        line-height: 40px;
+        width: 1180px;
+        margin: 20px auto;
+        padding: 10px;
+}
+.beneList{
+    font-size:20px;
+    width: 1150px;
+    list-style-position: inside;
+    margin-left: 50px;
+    margin: 15px auto;
+}
+.beneList > li {
+    font-weight: bold;
+}
+footer{
+    text-align: center;
+    font-size: 1.1em;
+}

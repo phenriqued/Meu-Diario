@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/styleHome.css" th:href="@{/css/styleHome.css}">
+    <link rel="icon" type="image/png" href="/image/icons-diario.png">
+    <title>Home</title>
+</head>
+    <body>
+        <header>
+            <h1><a href="/home">Meu Diário  <img src="/image/icons-diario.png" alt="diário"></a></h1>
+            <nav>
+                <ul>
+                    <li> <a href="#main">Home</a> </li>
+                    <li> <a href="#conheca">Conheça</a> </li>
+                    <li> <a href="#beneficio">Benefícios</a> </li>
+                    <li> <a href="">Login</a> </li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="main" class="mainSection">
+                <h2>O que você guardou para hoje?</h2>
+                <h3>Registre seus momentos, pensamentos e conquistas em um espaço só seu.</h3>
+                <p> Cada dia é uma nova página em branco. No "Meu Diário", você pode transformar suas experiências em memórias duradouras. Crie suas notas diárias, edite seus pensamentos e construa seu próprio legado.
+                    Deslize para baixo e descubra como começar a escrever sua história hoje mesmo!</p>
+                <button onclick="window.location.href='../HelloWorld'" > Crie seu diário! </button>
+            </section>
+        </main>
+
+        <section id="conheca" class="conheca">
+            <h1>Conheça o "Meu Diário"</h1>
+            <p class="paragrafo1">Um espaço pessoal para você se conectar consigo mesmo. Registre seus pensamentos e momentos em um ambiente seguro e intuitivo.</p>
+
+            <div class="socrates">
+                <img src="/image/socrates.png" alt="Sócrates">
+                <blockquote>
+                    <p>"Conhece-te a ti mesmo e conhecerá o universo e os deuses."</p>
+                    <footer>Sócrates</footer>
+                </blockquote>
+            </div>
+            <br>
+            <h2>Você pode:</h2>
+            <div class="list">
+                <ul>
+                    <li> <strong>Crie sua conta:</strong>
+                        Cadastro rápido e seguro, com validação de dados e proteção de senha.</li>
+                    <li> <strong>Escreva seu dia:</strong>
+                        Registre suas experiências diárias com data e hora, edite suas notas no mesmo dia ou no dia anterior.</li>
+                    <li> <strong>Privacidade:</strong>
+                        Suas entradas são protegidas e visíveis apenas para você.</li>
+                    <li> <strong>Organização:</strong>
+                        Visualize suas entradas em ordem cronológica, com registro de criação e edição.</li>
+                </ul>
+            </div>
+        </section>
+        <hr>
+        <section id="beneficio" class="beneficio">
+            <h1>Benefícios</h1>
+            <p class="beneParagrafo"> Escrever um diário é mais do que apenas registrar eventos; é uma jornada de autoconhecimento e bem-estar. No Meu Diário, você encontra um espaço seguro e intuitivo para explorar seus pensamentos, emoções e experiências.</p>
+            <ol class="beneList">
+                <li>Autoconhecimento e Reflexão: </li>
+                    <ul>
+                        <li>Ao escrever regularmente, você se torna mais consciente de seus padrões de pensamento, emoções e comportamentos.</li>
+                        <li>O Meu Diário permite que você revisite suas entradas, refletindo sobre seu crescimento pessoal e aprendendo com suas experiências.</li>
+                        <li>A máxima de Sócrates, "Conhece-te a ti mesmo", ganha vida no Meu Diário, onde cada palavra escrita é um passo em direção à sua essência.</li>
+                    </ul>
+
+                <li>Gerenciamento de Emoções e Redução de Estresse: </li>
+                    <ul>
+                        <li>Escrever sobre suas emoções ajuda a processá-las de forma saudável, reduzindo o estresse e a ansiedade.</li>
+                        <li>O ato de escrever permite que você organize seus pensamentos e encontre clareza em situações desafiadoras.</li>
+                        <li>O Meu Diário oferece um espaço seguro para expressar suas emoções, sem julgamentos ou interrupções.</li>
+                    </ul>
+
+                <li> Desenvolvimento da Criatividade e da Expressão:</li>
+                    <ul>
+                        <li>Escrever regularmente estimula a criatividade e a capacidade de se expressar de forma clara e concisa.</li>
+                        <li>No Meu Diário, você pode explorar diferentes estilos de escrita, desde relatos pessoais até reflexões poéticas.</li>
+                        <li>A prática da escrita diária aprimora suas habilidades de comunicação, tanto escrita quanto verbal.</li>
+                    </ul>
+
+                <li> Organização e Memória:</li>
+                    <ul>
+                        <li>O Meu Diário permite que você organize suas memórias e acompanhe seu progresso ao longo do tempo.</li>
+                        <li>Com a funcionalidade de data e hora, você pode facilmente localizar entradas específicas e reviver momentos importantes.</li>
+                        <li>O registro diário ajuda a fortalecer a memória e a preservar suas experiências para o futuro.</li>
+                    </ul>
+                <li>  Privacidade e Segurança:</li>
+                    <ul>
+                        <li>No Meu Diário, suas entradas são protegidas e visíveis apenas para você, garantindo total privacidade.</li>
+                        <li>A segurança de senha e a proteção de dados garantem que suas informações pessoais estejam seguras.</li>
+                        <li>Você pode escrever livremente, sabendo que seus pensamentos e emoções estão protegidos!!</li>
+                    </ul>
+            </ol>
+
+        </section>
+        <hr>
+    <footer>
+        <p>Comece sua jornada de autoconhecimento e bem-estar com o Meu Diário. Crie sua conta hoje mesmo e descubra os benefícios de escrever sua história.</p>
+    </footer>
+</body>
+</html>
