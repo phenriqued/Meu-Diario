@@ -157,7 +157,15 @@ hr {
 .beneList > li {
     font-weight: bold;
 }
+
 footer{
     text-align: center;
     font-size: 1.1em;
+}
+footer a{
+    text-decoration: none;
+    color: #007bff;
+}
+.footer a:hover {
+    text-decoration: underline;
 }
