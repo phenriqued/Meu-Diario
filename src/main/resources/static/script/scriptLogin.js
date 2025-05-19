@@ -1,6 +1,6 @@
 
 //Mostrar a senha
-const senhaInput = document.getElementById('senha');
+const senhaInput = document.getElementById('password');
 const mostrarSenhaButton = document.querySelector('.password-toggle');
 
 mostrarSenhaButton.addEventListener('click', function() {

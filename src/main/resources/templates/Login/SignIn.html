@@ -13,12 +13,25 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form id="loginForm">
+        <form id="loginForm" method="post" action="#" th:action="@{/signIn}">
+
+            <div class="alert alert-danger text-center text-uppercase" th:if="${param.error != null}">
+                <p>
+                    <strong>Dados inválidos!</strong>
+                </p>
+            </div>
+
+            <div class="alert alert-danger text-center text-uppercase" th:if="${param.logout != null}">
+                <p>
+                    <strong>Você saiu!</strong>
+                </p>
+            </div>
+
             <div class="form-group">
                 <input type="text" id="username" name="username" placeholder="Apelido ou número de celular" required>
             </div>
             <div class="form-group password-input">
-                <input type="password" id="senha" name="senha" placeholder="Senha" required>
+                <input type="password" id="password" name="password" placeholder="Senha" required>
                 <button type="button" id="mostrarSenha" class="password-toggle">
                     <img src="/image/Login/eye-off-icon.png" alt="Mostrar senha">
                 </button>
