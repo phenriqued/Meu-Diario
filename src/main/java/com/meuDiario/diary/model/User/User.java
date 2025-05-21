@@ -1,6 +1,8 @@
 package com.meuDiario.diary.model.User;
 
 
+import com.meuDiario.diary.dto.login.SignUpUserDTO;
+import com.meuDiario.diary.infra.Security.SecurityService.Encoder.Codification;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -21,6 +23,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "BINARY(16)")
     private UUID id;
     @Setter
     @Column(unique = true, nullable = false, length = 20)
@@ -32,12 +35,10 @@ public class User {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    public User(String nickname, String password, String phoneNumber) {
-        this.nickname = nickname;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
+    public User(SignUpUserDTO dto) {
+        this.nickname = dto.nickname();
+        this.password = Codification.codification(dto.password());
+        this.phoneNumber = dto.phoneNumber();
         this.createdAt = LocalDateTime.now();
     }
-
-
 }

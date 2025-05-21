@@ -13,15 +13,21 @@
 <body>
     <div class="login-container">
         <h2>Cadastrar-se</h2>
-        <form id="loginForm">
+        <form id="loginForm" method="post" action="#" th:action="@{/signUp}">
+            <div class="alert alert-danger text-center text-uppercase" th:if="${param.error != null}">
+                <p>
+                    <strong>Dados inválidos!</strong>
+                </p>
+            </div>
+
             <div class="form-group">
-                <input type="tel" id="phone" name="phone" placeholder="Número de Celular" required>
+                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Número de Celular" required>
             </div>
             <div class="form-group">
-                <input type="text" id="username" name="username" placeholder="Apelido" required>
+                <input type="text" id="nickname" name="nickname" placeholder="Apelido" required>
             </div>
             <div class="form-group password-input">
-                <input type="password" id="senha" name="senha" placeholder="Senha" required>
+                <input type="password" id="password" name="password" placeholder="Senha" required>
                 <button type="button" id="mostrarSenha" class="password-toggle">
                     <img src="/image/Login/eye-off-icon.png" alt="Mostrar senha">
                 </button>
