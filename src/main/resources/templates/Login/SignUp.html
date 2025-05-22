@@ -2,43 +2,44 @@
 <html lang="pt-br"
       xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{template.html}" xmlns="http://www.w3.org/1999/html">
+      layout:decorate="~{template.html}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/css/styleLogin.css" th:href="@{/css/styleLogin.css}">
-    <link rel="icon" type="image/ico" href="/image/icons-diario.png">
     <title>Cadastrar-se</title>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Cadastrar-se</h2>
-        <form id="loginForm" method="post" action="#" th:action="@{/signUp}">
-            <div class="alert alert-danger text-center text-uppercase" th:if="${param.error != null}">
-                <p>
-                    <strong>Dados inválidos!</strong>
-                </p>
-            </div>
+<div layout:fragment="content">
+    <div class="login-page">
+        <div class="login-container">
+            <h2>Cadastrar-se</h2>
+            <form id="loginForm" method="post" action="#" th:action="@{/signUp}">
+                <div class="alert alert-danger text-center text-uppercase" th:if="${param.error != null}">
+                    <p>
+                        <strong>Dados inválidos!</strong>
+                    </p>
+                </div>
 
-            <div class="form-group">
-                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Número de Celular" required>
-            </div>
-            <div class="form-group">
-                <input type="text" id="nickname" name="nickname" placeholder="Apelido" required>
-            </div>
-            <div class="form-group password-input">
-                <input type="password" id="password" name="password" placeholder="Senha" required>
-                <button type="button" id="mostrarSenha" class="password-toggle">
-                    <img src="/image/Login/eye-off-icon.png" alt="Mostrar senha">
-                </button>
-            </div>
-            <button type="submit" class="login-button">Cadastrar-se</button>
+                <div class="form-group">
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Número de Celular" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="nickname" name="nickname" placeholder="Apelido" required>
+                </div>
+                <div class="form-group password-input">
+                    <input type="password" id="password" name="password" placeholder="Senha" required>
+                    <button type="button" id="mostrarSenha" class="password-toggle">
+                        <img src="/image/Login/eye-off-icon.png" alt="Mostrar senha">
+                    </button>
+                </div>
+                <button type="submit" class="login-button">Cadastrar-se</button>
 
-            <div class="links">
-                <p> Já tem conta? <a href="/signIn">Entrar</a></p>
-            </div>
-        </form>
+                <div class="links">
+                    <p> Já tem conta? <a href="/signIn">Entrar</a></p>
+                </div>
+            </form>
+        </div>
     </div>
     <script src="/script/scriptLogin.js"></script>
+</div>
 </body>
 </html>

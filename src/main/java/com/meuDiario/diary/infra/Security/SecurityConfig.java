@@ -4,7 +4,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -19,16 +18,15 @@ public class SecurityConfig {
         return httpSecurity
                 .authorizeHttpRequests(
                         auth -> auth
-                                .requestMatchers("/signIn", "/signUp").permitAll()
+                                .requestMatchers("/signIn", "/signUp", "/home", "/HelloWorld").permitAll()
                                 .requestMatchers("/css/**", "/script/**", "/image/**").permitAll()
                                 .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
-                                .requestMatchers("/home").authenticated()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(
                         form -> form.loginPage("/signIn")
-                                .defaultSuccessUrl("/HelloWorld").permitAll())
-                .logout(LogoutConfigurer::permitAll)
+                                .defaultSuccessUrl("/home").permitAll())
+                .logout(logout -> logout.logoutSuccessUrl("/signIn?logout"))
                 .build();
     }
 

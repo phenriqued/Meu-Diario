@@ -1,0 +1,38 @@
+<header class="header" xmlns:th="http://thymeleaf.org" th:fragment="menu"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+  <div class="logo">
+      <h1>
+          <a href="../HomePage/HomePage.html" th:href="@{/home}">
+              <span>Meu Diário</span>
+            <img src="../../static/image/icons-diario.png" th:src="@{/image/icons-diario.png}" alt="diário">
+          </a>
+      </h1>
+  </div>
+  <nav  class="main-nav">
+    <ul>
+      <li> <a href="../HomePage/HomePage.html" th:href="@{/home}">Home</a> </li>
+
+      <li> <a href="../HomePage/HomePage.html" th:href="@{/home#conheca}">Conheça</a> </li>
+
+      <li> <a href="../HomePage/HomePage.html" th:href="@{/home#beneficio}">Benefícios</a> </li>
+
+      <li sec:authorize="!isAuthenticated()">
+          <a href="../Login/SignIn.html" th:href="@{/signIn}">Login</a> </li>
+
+        <li class="dropdown" sec:authorize="isAuthenticated()">
+            <div class="dropdown-toggle">
+                Olá, <span sec:authentication="principal.username"></span> ▼
+            </div>
+            <div class="dropdown-menu">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit">SAIR</button>
+                </form>
+            </div>
+        </li>
+
+
+    </ul>
+
+  </nav>
+
+</header>

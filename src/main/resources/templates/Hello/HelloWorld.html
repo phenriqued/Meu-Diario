@@ -4,15 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{template.html}">
 
-    <head>
-        <title>Hello World</title>
-        <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
-        <link rel="icon" type="image/png" href="/image/icons-diario.png">
-    </head>
-
-    <body>
-        <div>
-            <h1>Hello World <img src="/image/icons-diario.png" alt="diário" style="vertical-align: middle;"> </h1>
-        </div>
-    </body>
+<div layout:fragment="content">
+    <h1>Hello World</h1>
+</div>
 </html>

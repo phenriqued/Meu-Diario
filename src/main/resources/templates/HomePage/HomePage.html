@@ -2,26 +2,12 @@
 <html lang="pt-br"
       xmlns:th="http://thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{template.html}" xmlns="http://www.w3.org/1999/html">
+      layout:decorate="~{template.html}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/css/styleHome.css" th:href="@{/css/styleHome.css}">
-    <link rel="icon" type="image/png" href="/image/icons-diario.png">
-    <title>Home</title>
 </head>
-    <body>
-        <header>
-            <h1><a href="/home">Meu Diário  <img src="/image/icons-diario.png" alt="diário"></a></h1>
-            <nav>
-                <ul>
-                    <li> <a href="#main">Home</a> </li>
-                    <li> <a href="#conheca">Conheça</a> </li>
-                    <li> <a href="#beneficio">Benefícios</a> </li>
-                    <li> <a href="/signIn">Login</a> </li>
-                </ul>
-            </nav>
-        </header>
+<body>
+<div layout:fragment="content">
 
         <main>
             <section id="main" class="mainSection">
@@ -29,7 +15,7 @@
                 <h3>Registre seus momentos, pensamentos e conquistas em um espaço só seu.</h3>
                 <p> Cada dia é uma nova página em branco. No "Meu Diário", você pode transformar suas experiências em memórias duradouras. Crie suas notas diárias, edite seus pensamentos e construa seu próprio legado.
                     Deslize para baixo e descubra como começar a escrever sua história hoje mesmo!</p>
-                <button onclick="window.location.href='/signUp'" > Crie seu diário! </button>
+                <button onclick="window.location.href='/signUp'" class="idButton"> Crie seu diário! </button>
             </section>
         </main>
 
@@ -105,5 +91,6 @@
         <p>Comece sua jornada de autoconhecimento e bem-estar com o Meu Diário. <a href="/signUp">Crie sua conta</a>
             hoje mesmo e descubra os benefícios de escrever sua história.</p>
     </footer>
+</div>
 </body>
 </html>

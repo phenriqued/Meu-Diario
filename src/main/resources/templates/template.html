@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br"
       xmlns:th="http://thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nx/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
     <head>
+        <title>My Diary</title>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../static/image/icons-diario.png" th:href="@{/image/icons-diario.png}">
         <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
     </head>
 
     <body>
-        <div layout:fragment="content"></div>
+        <div class="wrapper">
+            <div th:replace="~{components/_menu.html :: menu}"></div>
+
+
+            <div layout:fragment="content"></div>
+        </div>
     </body>
 
 </html>
