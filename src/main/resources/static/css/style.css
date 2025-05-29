@@ -89,6 +89,8 @@ body {
 .dropdown-menu {
   display: none;
   position: absolute;
+  flex-direction: column;
+  gap: 25px;
   right: 0;
   top: 100%;
   background-color: white;

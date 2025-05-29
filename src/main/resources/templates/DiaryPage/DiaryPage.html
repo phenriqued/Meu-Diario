@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <link rel="stylesheet" href="../../static/css/styleDiary.css" th:href="@{/css/styleDiary.css}">
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="container">
+            <form method="post" th:action="@{/diario/salvar}">
+                <div class="date-bar">
+                    <!-- Botão voltar -->
+                    <a>&lt;</a>
+
+                    <!-- Lista de datas -->
+
+                </div>
+
+                <div class="entry-box">
+                    <textarea name="texto" id="texto"  placeholder="No que está pensando? Como foi seu dia?"></textarea>
+                    <input type="hidden" name="data"  />
+                    <button class="save-btn" type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

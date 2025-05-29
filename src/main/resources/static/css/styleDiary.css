@@ -1,0 +1,63 @@
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    min-height: calc(100vh - 60px);
+    padding-top: 5px;
+}
+
+.date-bar {
+    background-color: #f2f2f2;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.date-bar a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.date-bar a.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.entry-box {
+    background-color: #f5f5f5;
+    padding: 30px;
+    border-radius: 15px;
+    min-height: 200px;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    resize: vertical;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.save-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

@@ -24,12 +24,27 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                 Olá, <span sec:authentication="principal.username"></span> ▼
             </div>
             <div class="dropdown-menu">
+                <form th:action="@{/diary}" method="get">
+                    <button type="submit">Meu Diario</button>
+                </form>
                 <form th:action="@{/logout}" method="post">
                     <button type="submit">SAIR</button>
                 </form>
             </div>
         </li>
-
+<!--        <li class="dropdown" sec:authorize="isAuthenticated()">-->
+<!--            <div class="dropdown-toggle">-->
+<!--                Olá, <span sec:authentication="principal.username"></span> ▼-->
+<!--            </div>-->
+<!--            <div class="dropdown-menu">-->
+<!--                <form th:action="@{/diary}" method="get">-->
+<!--                    <button type="submit">Meu Diário</button>-->
+<!--                </form>-->
+<!--                <form th:action="@{/logout}" method="post">-->
+<!--                    <button type="submit">SAIR</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </li>-->
 
     </ul>
 
