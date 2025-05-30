@@ -9,18 +9,30 @@
 <body>
     <div layout:fragment="content">
         <div class="container">
-            <form method="post" th:action="@{/diario/salvar}">
+            <div class="alert alert-success text-center text-uppercase" th:if="${param.verificar != null}">
+                <p>
+                    <strong>Salvo com sucesso!</strong>
+                </p>
+            </div>
+            <form method="post" th:action="@{/diary/save-note-diary}">
                 <div class="date-bar">
                     <!-- Botão voltar -->
-                    <a>&lt;</a>
+                    <a href="#" th:href="@{/diary?offset=1}">&lt;</a>
 
-                    <!-- Lista de datas -->
+                    <div th:each="data : ${datas}">
+                        <a th:href="@{/diary(data=${data})}">
+                            <span th:text="${#temporals.format(data, 'dd/MM')}"
+                                  th:classappend="${data == hoje} ? 'hoje' : ''">
+                            </span>
+                        </a>
+                    </div>
 
                 </div>
 
                 <div class="entry-box">
-                    <textarea name="texto" id="texto"  placeholder="No que está pensando? Como foi seu dia?"></textarea>
-                    <input type="hidden" name="data"  />
+                    <textarea name="texto" id="texto" placeholder="No que está pensando? Como foi seu dia?"
+                              th:text="${texto}"> </textarea>
+                    <input type="hidden" name="data" th:value="${dataSelecionada}" />
                     <button class="save-btn" type="submit">Salvar</button>
                 </div>
             </form>
