@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ServiceDiary {
@@ -23,19 +24,12 @@ public class ServiceDiary {
         this.userRepository = userRepository;
     }
 
-    public void saveDiaryNotes(String text, UserAuthentication userAuthentication){
-        User user = findByUser(userAuthentication);
-        diaryRepository.save(new Diary(text, user));
-    }
-
     public void saveOrUpdateDiaryNotes(LocalDate date, String text, UserAuthentication userAuthentication){
         User user = findByUser(userAuthentication);
         if(!diaryRepository.existsByEntryDate(date)){
-            System.out.println("Salvando a prrimeira fez");
             diaryRepository.save(new Diary(text, user));
             return;
         }
-        System.out.println("Atualizando");
         Diary noteDiary = diaryRepository.findByEntryDateAndUser(date, user)
                             .orElseThrow(() -> new BusinnesRuleException("Notas do diário não foi encontrado."));
         noteDiary.setText(text);
@@ -51,6 +45,13 @@ public class ServiceDiary {
     public String findDiaryText(UserAuthentication userAuthentication, LocalDate selectDate) {
         User user = findByUser(userAuthentication);
         return diaryRepository.findTextByDateAndUser(user, selectDate).orElse("");
+    }
+
+    public void deleteNote(LocalDate data, UserAuthentication userAuthentication) {
+        User user = findByUser(userAuthentication);
+        Diary deleteDiary = diaryRepository.findByEntryDateAndUser(data, user).orElse(null);
+        if (Objects.isNull(deleteDiary)) throw new BusinnesRuleException("Não é possível excluir uma nota do diário que não foi salva!");
+        diaryRepository.delete(deleteDiary);
     }
 
     private User findByUser(UserAuthentication userAuthentication){

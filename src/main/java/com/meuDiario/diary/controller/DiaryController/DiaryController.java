@@ -1,5 +1,6 @@
 package com.meuDiario.diary.controller.DiaryController;
 
+import com.meuDiario.diary.infra.Exception.BusinnesRuleException.BusinnesRuleException;
 import com.meuDiario.diary.infra.Security.AuthenticatedUser.UserAuthentication;
 import com.meuDiario.diary.service.ServiceDiary.ServiceDiary;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -44,6 +45,19 @@ public class DiaryController {
                             @AuthenticationPrincipal UserAuthentication user){
         service.saveOrUpdateDiaryNotes(data, text, user);
         return "redirect:/diary?verificar=true";
+    }
+
+    @PostMapping("/delete-note")
+    public String deleteDiaryNote(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data,
+                                  @AuthenticationPrincipal UserAuthentication user, Model model){
+        try{
+            service.deleteNote(data, user);
+            return PAGE_MEU_DIARIO;
+        } catch (BusinnesRuleException e) {
+            model.addAttribute("texto", "");
+            return "redirect:/diary?excluir=false";
+        }
+
     }
 
 }

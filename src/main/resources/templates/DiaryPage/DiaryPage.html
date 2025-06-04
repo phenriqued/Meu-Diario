@@ -14,6 +14,12 @@
                     <strong>Salvo com sucesso!</strong>
                 </p>
             </div>
+            <div class="alert alert-success text-center text-uppercase" th:if="${param.excluir != null}">
+                <p>
+                    <strong>Como você vai excluir a nota se ainda nem salvou :(</strong>
+                </p>
+            </div>
+
             <form method="post" th:action="@{/diary/save-note-diary}">
                 <div class="date-bar">
                     <!-- Botão voltar -->
@@ -33,9 +39,19 @@
                     <textarea name="texto" id="texto" placeholder="No que está pensando? Como foi seu dia?"
                               th:text="${texto}"> </textarea>
                     <input type="hidden" name="data" th:value="${dataSelecionada}" />
-                    <button class="save-btn" type="submit">Salvar</button>
+                    <div class="buttons-row">
+                        <button class="save-btn" type="submit">Salvar</button>
+                    </div>
                 </div>
             </form>
+
+            <form method="post" th:action="@{/diary/delete-note}" >
+                <div class="entry-box">
+                    <input type="hidden" name="data" th:value="${dataSelecionada}" />
+                    <button class="delete-btn" type="submit">Excluir</button>
+                </div>
+            </form>
+
         </div>
     </div>
 </body>
