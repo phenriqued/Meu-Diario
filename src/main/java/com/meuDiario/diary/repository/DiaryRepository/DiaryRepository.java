@@ -16,4 +16,8 @@ public interface DiaryRepository extends JpaRepository<Diary, Long> {
 
     @Query("SELECT d.text FROM Diary d WHERE d.user = :user AND d.entryDate = :selectDate")
     Optional<String> findTextByDateAndUser(User user, LocalDate selectDate);
+
+    Optional<Diary> findByEntryDateAndUser(LocalDate entryDate, User user);
+
+    Boolean existsByEntryDate(LocalDate entryDate);
 }

@@ -1,5 +1,6 @@
 package com.meuDiario.diary.service.ServiceDiary;
 
+import com.meuDiario.diary.infra.Exception.BusinnesRuleException.BusinnesRuleException;
 import com.meuDiario.diary.infra.Security.AuthenticatedUser.UserAuthentication;
 import com.meuDiario.diary.model.Diary.Diary;
 import com.meuDiario.diary.model.User.User;
@@ -25,6 +26,20 @@ public class ServiceDiary {
     public void saveDiaryNotes(String text, UserAuthentication userAuthentication){
         User user = findByUser(userAuthentication);
         diaryRepository.save(new Diary(text, user));
+    }
+
+    public void saveOrUpdateDiaryNotes(LocalDate date, String text, UserAuthentication userAuthentication){
+        User user = findByUser(userAuthentication);
+        if(!diaryRepository.existsByEntryDate(date)){
+            System.out.println("Salvando a prrimeira fez");
+            diaryRepository.save(new Diary(text, user));
+            return;
+        }
+        System.out.println("Atualizando");
+        Diary noteDiary = diaryRepository.findByEntryDateAndUser(date, user)
+                            .orElseThrow(() -> new BusinnesRuleException("Notas do diário não foi encontrado."));
+        noteDiary.setText(text);
+        diaryRepository.flush();
     }
 
     public List<LocalDate> findDiaryDatesByUser(UserAuthentication userAuthentication) {

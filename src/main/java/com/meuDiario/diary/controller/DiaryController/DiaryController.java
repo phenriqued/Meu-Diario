@@ -39,11 +39,10 @@ public class DiaryController {
     }
 
     @PostMapping("/save-note-diary")
-    public String saveDiary(@ModelAttribute("texto") String text,
+    public String saveDiaryOrUpdate(@ModelAttribute("texto") String text,
                             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data,
                             @AuthenticationPrincipal UserAuthentication user){
-
-        service.saveDiaryNotes(text, user);
+        service.saveOrUpdateDiaryNotes(data, text, user);
         return "redirect:/diary?verificar=true";
     }
 
