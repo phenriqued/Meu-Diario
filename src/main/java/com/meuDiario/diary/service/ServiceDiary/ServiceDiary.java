@@ -26,7 +26,7 @@ public class ServiceDiary {
 
     public void saveOrUpdateDiaryNotes(LocalDate date, String text, UserAuthentication userAuthentication){
         User user = findByUser(userAuthentication);
-        if(!diaryRepository.existsByEntryDate(date)){
+        if(!diaryRepository.existsByEntryDateAndUser(date, user)){
             diaryRepository.save(new Diary(text, user));
             return;
         }

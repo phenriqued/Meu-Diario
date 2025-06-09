@@ -14,13 +14,23 @@
                     <strong>Salvo com sucesso!</strong>
                 </p>
             </div>
+            <div class="alert alert-success text-center text-uppercase" th:if="${param.verificarText != null}">
+                <p>
+                    <strong>Uma nota do seu diário não pode ficar em branco!</strong>
+                </p>
+            </div>
+            <div class="alert alert-success text-center text-uppercase" th:if="${param.excluirSucess != null}">
+            <p>
+                <strong>Excluido com sucesso!</strong>
+            </p>
+            </div>
             <div class="alert alert-success text-center text-uppercase" th:if="${param.excluir != null}">
                 <p>
                     <strong>Como você vai excluir a nota se ainda nem salvou :(</strong>
                 </p>
             </div>
 
-            <form method="post" th:action="@{/diary/save-note-diary}">
+            <form method="post" th:action="@{/diary/save-note-diary}" id="diaryForm">
                 <div class="date-bar">
                     <!-- Botão voltar -->
                     <a href="#" th:href="@{/diary?offset=1}">&lt;</a>
@@ -39,20 +49,15 @@
                     <textarea name="texto" id="texto" placeholder="No que está pensando? Como foi seu dia?"
                               th:text="${texto}"> </textarea>
                     <input type="hidden" name="data" th:value="${dataSelecionada}" />
+
                     <div class="buttons-row">
                         <button class="save-btn" type="submit">Salvar</button>
+                        <button class="delete-btn" type="button" onclick="confirmAndDelete()">Excluir</button>
                     </div>
                 </div>
             </form>
-
-            <form method="post" th:action="@{/diary/delete-note}" >
-                <div class="entry-box">
-                    <input type="hidden" name="data" th:value="${dataSelecionada}" />
-                    <button class="delete-btn" type="submit">Excluir</button>
-                </div>
-            </form>
-
         </div>
+        <script src="/script/scriptDiaryPage.js"></script>
     </div>
 </body>
 </html>

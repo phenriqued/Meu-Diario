@@ -43,6 +43,7 @@ public class DiaryController {
     public String saveDiaryOrUpdate(@ModelAttribute("texto") String text,
                             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data,
                             @AuthenticationPrincipal UserAuthentication user){
+        if(text.isEmpty()) return "redirect:/diary?verificarText=true";
         service.saveOrUpdateDiaryNotes(data, text, user);
         return "redirect:/diary?verificar=true";
     }
@@ -52,12 +53,11 @@ public class DiaryController {
                                   @AuthenticationPrincipal UserAuthentication user, Model model){
         try{
             service.deleteNote(data, user);
-            return PAGE_MEU_DIARIO;
+            return "redirect:/diary?excluirSucess=true";
         } catch (BusinnesRuleException e) {
             model.addAttribute("texto", "");
             return "redirect:/diary?excluir=false";
         }
-
     }
 
 }
