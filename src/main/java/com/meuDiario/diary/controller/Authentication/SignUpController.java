@@ -1,22 +1,24 @@
-package com.meuDiario.diary.controller.Login;
+package com.meuDiario.diary.controller.Authentication;
 
 import com.meuDiario.diary.dto.login.SignUpUserDTO;
-import com.meuDiario.diary.service.login.signUp.SignUpService;
+import com.meuDiario.diary.service.Authentication.signUp.SignUpService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value = "/signUp")
-public class SignUp {
+public class SignUpController {
 
     @Autowired
     private SignUpService service;
-    private static final String PAGE_LOGIN = "Login/SignUp";
+    private static final String PAGE_LOGIN = "Authentication/SignUp";
 
     @GetMapping
     public String signInPage(){
@@ -29,8 +31,8 @@ public class SignUp {
             model.addAttribute("dados", dados);
             return PAGE_LOGIN;
         }
-        service.createUser(dados);
-        return "redirect:home";
+        var user = service.createUser(dados);
+        return "redirect:AtivarConta?nickname="+user.getNickname();
     }
 
 

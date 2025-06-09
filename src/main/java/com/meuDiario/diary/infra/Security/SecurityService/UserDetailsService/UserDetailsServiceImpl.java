@@ -17,12 +17,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private final UserRepository repository;
 
-
     @Override
     public UserDetails loadUserByUsername(String identify) throws UsernameNotFoundException {
-
-        System.out.println("\nUser:"+identify+"\n");
-
         var user = repository.findByNickname(identify);
         if (user.isPresent()){
             return user.map(UserAuthentication::new).get();

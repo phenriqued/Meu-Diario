@@ -35,10 +35,33 @@ public class User {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @Column(unique = true)
+    private String uuidTokenActivation;
+    @Column
+    private LocalDateTime uuidTokenExpiration;
+    @Column(nullable = false)
+    private Boolean isEnable;
+
     public User(SignUpUserDTO dto) {
         this.nickname = dto.nickname();
         this.password = Codification.codification(dto.password());
         this.phoneNumber = dto.phoneNumber();
         this.createdAt = LocalDateTime.now();
+        this.isEnable = false;
+        setUuidTokenActivation();
     }
+
+    public void setEnable() {
+        this.isEnable = !isEnable;
+    }
+
+    public void setUuidTokenActivation(){
+        this.uuidTokenActivation = UUID.randomUUID().toString().substring(0, 5);
+        this.uuidTokenExpiration = LocalDateTime.now().plusMinutes(30);
+    }
+    public void clearTokenActivation(){
+        this.uuidTokenExpiration = null;
+        this.uuidTokenActivation = null;
+    }
+
 }

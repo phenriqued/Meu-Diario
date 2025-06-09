@@ -14,14 +14,13 @@ mostrarSenhaButton.addEventListener('click', function() {
 });
 
 // formatar número de celular
-const celularInput = document.getElementById('phone');
+const celularInput = document.getElementById('phoneNumber');
 
 celularInput.addEventListener('input', formatarCelular);
 
 function formatarCelular(event) {
-    let numero = event.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-    numero = numero.substring(0, 11); // Limita o número a 11 dígitos
-
+    let numero = event.target.value.replace(/\D/g, '');
+    numero = numero.substring(0, 11);
     let numeroFormatado = '';
     if (numero.length > 0) {
         numeroFormatado = `(${numero.substring(0, 2)}`;

@@ -1,4 +1,4 @@
-package com.meuDiario.diary.service.login.signUp;
+package com.meuDiario.diary.service.Authentication.signUp;
 
 import com.meuDiario.diary.dto.login.SignUpUserDTO;
 import com.meuDiario.diary.model.User.User;

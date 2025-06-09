@@ -17,7 +17,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
       <li> <a href="../HomePage/HomePage.html" th:href="@{/home#beneficio}">Benefícios</a> </li>
 
       <li sec:authorize="!isAuthenticated()">
-          <a href="../Login/SignIn.html" th:href="@{/signIn}">Login</a> </li>
+          <a href="../Authentication/SignIn.html" th:href="@{/signIn}">Login</a> </li>
 
         <li class="dropdown" sec:authorize="isAuthenticated()">
             <div class="dropdown-toggle">
@@ -32,20 +32,6 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                 </form>
             </div>
         </li>
-<!--        <li class="dropdown" sec:authorize="isAuthenticated()">-->
-<!--            <div class="dropdown-toggle">-->
-<!--                Olá, <span sec:authentication="principal.username"></span> ▼-->
-<!--            </div>-->
-<!--            <div class="dropdown-menu">-->
-<!--                <form th:action="@{/diary}" method="get">-->
-<!--                    <button type="submit">Meu Diário</button>-->
-<!--                </form>-->
-<!--                <form th:action="@{/logout}" method="post">-->
-<!--                    <button type="submit">SAIR</button>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </li>-->
-
     </ul>
 
   </nav>
