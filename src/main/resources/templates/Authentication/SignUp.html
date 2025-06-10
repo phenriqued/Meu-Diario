@@ -12,7 +12,7 @@
     <div class="login-page">
         <div class="login-container">
             <h2>Cadastrar-se</h2>
-            <form id="loginForm" method="post" action="#" th:action="@{/signUp}">
+            <form id="loginForm" method="post" action="#" th:action="@{/signUp}" th:object="${dados}">
                 <div class="alert alert-danger text-center text-uppercase" th:if="${param.error != null}">
                     <p>
                         <strong>Dados inválidos!</strong>
@@ -21,15 +21,18 @@
 
                 <div class="form-group">
                     <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Número de Celular" required>
+                    <div class="alert alert-danger text-center text-uppercase" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
                 </div>
                 <div class="form-group">
                     <input type="text" id="nickname" name="nickname" placeholder="Apelido" required>
+                    <div class="alert alert-danger text-center text-uppercase"th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}"></div>
                 </div>
                 <div class="form-group password-input">
                     <input type="password" id="password" name="password" placeholder="Senha" required>
                     <button type="button" id="mostrarSenha" class="password-toggle">
                         <img src="/image/Login/eye-off-icon.png" alt="Mostrar senha">
                     </button>
+                    <div class="alert alert-danger text-center text-uppercase" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                 </div>
                 <button type="submit" class="login-button">Cadastrar-se</button>
 

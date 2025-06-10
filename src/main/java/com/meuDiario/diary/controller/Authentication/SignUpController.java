@@ -21,7 +21,8 @@ public class SignUpController {
     private static final String PAGE_LOGIN = "Authentication/SignUp";
 
     @GetMapping
-    public String signInPage(){
+    public String signInPage(Model model){
+        model.addAttribute("dados", new SignUpUserDTO("", "", ""));
         return PAGE_LOGIN;
     }
 

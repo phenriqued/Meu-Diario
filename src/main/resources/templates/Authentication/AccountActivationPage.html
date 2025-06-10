@@ -15,25 +15,30 @@
             <form id="loginForm" method="post" action="#" th:action="@{/AtivarConta}">
                 <input type="hidden" name="nickname" th:value="${nickname}">
 
-                <div class="alert alert-danger text-center text-uppercase" th:if="${param.error != null}">
+                <div class="alert alert-danger text-center text-uppercase" th:if="${erroToken != null}">
                     <p>
-                        <strong>Token inválido!</strong>
+                        <strong th:text="${erroToken}"></strong>
                     </p>
                 </div>
-                <div class="alert alert-danger text-center text-uppercase" th:if="${param.tokenExpiration != null}">
+                <div class="alert alert-danger text-center text-uppercase" th:if="${erro != null}">
                     <p>
-                        <strong>O tempo de ativação se expirou!</strong>
+                        <strong th:text="${erro}"></strong>
+                    </p>
+                </div>
+                <div class="alert alert-success text-center text-uppercase" th:if="${resendToken != null}">
+                    <p>
+                        <strong th:text="${resendToken}"></strong>
                     </p>
                 </div>
 
                 <div class="form-group">
                     <input type="text" id="tokenActivation" name="tokenActivation" placeholder="Digite o código." required
-                    th:text="${tokenActivation}">
+                    th:value="${tokenActivation}">
                 </div>
                 <button type="submit" class="login-button">Ativar</button>
             </form>
             <div class="links">
-                <a href="/HelloWorld">Enviar o código novamente.</a>
+                <a  th:href="@{/AtivarConta/resend-code(nickname=${nickname})}">Enviar o código novamente.</a>
             </div>
         </div>
     </div>

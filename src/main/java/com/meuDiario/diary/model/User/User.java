@@ -57,7 +57,7 @@ public class User {
 
     public void setUuidTokenActivation(){
         this.uuidTokenActivation = UUID.randomUUID().toString().substring(0, 5);
-        this.uuidTokenExpiration = LocalDateTime.now().plusMinutes(30);
+        this.uuidTokenExpiration = LocalDateTime.now().plusMinutes(5);
     }
     public void clearTokenActivation(){
         this.uuidTokenExpiration = null;
