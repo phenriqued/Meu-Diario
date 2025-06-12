@@ -23,9 +23,7 @@ public class NumberVerificationService {
         User user = userRepository.findByPhoneNumber(number.phoneNumber())
                 .orElseThrow(() ->
                         new BusinnesRuleException("Verifique o número digitado. O número: "+ number.phoneNumber()+" não corresponde a usuário válido."));
-        user.setUuidTokenActivation();
-        //smsRequestService.sendChangePasswordTextSms(user);
-        System.out.println("\nO CÓDIGO PARA ALTERAR A SENHA: "+user.getUuidTokenActivation()+"\n");
+        user.setUuidTokenActivation();smsRequestService.sendChangePasswordTextSms(user);
         userRepository.flush();
         return user.getNickname();
     }

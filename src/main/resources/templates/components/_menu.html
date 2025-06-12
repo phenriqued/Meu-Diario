@@ -30,6 +30,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
                 <form th:action="@{/logout}" method="post">
                     <button type="submit">SAIR</button>
                 </form>
+                <form th:action="@{/alterar-numero}" method="get">
+                    <button type="submit">Alterar número verificação</button>
+                </form>
             </div>
         </li>
     </ul>

@@ -30,6 +30,7 @@ public class User {
     private String nickname;
     @Column(nullable = false)
     private String password;
+    @Setter
     @Column(unique = true, nullable = false, length = 11)
     private String phoneNumber;
     @Column(nullable = false)

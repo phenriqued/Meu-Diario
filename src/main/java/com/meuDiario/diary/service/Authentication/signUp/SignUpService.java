@@ -20,8 +20,7 @@ public class SignUpService {
 
     public User createUser(SignUpUserDTO dto){
         var user = repository.save(new User(dto));
-        //smsRequestService.sendTextSms(user);
-        System.out.println("\nO CÓDIGO DE ATIVAÇÃO: "+user.getUuidTokenActivation()+"\n");
+        smsRequestService.sendTextSms(user);
         return user;
     }
 }

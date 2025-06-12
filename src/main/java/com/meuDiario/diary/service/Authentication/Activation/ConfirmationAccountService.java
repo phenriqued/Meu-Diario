@@ -57,7 +57,7 @@ public class ConfirmationAccountService {
         if(Objects.isNull(user.getUuidTokenActivation())) throw new BusinnesRuleException("Token is null");
 
         if(user.getUuidTokenExpiration().isAfter(LocalDateTime.now())) {
-            var shippingTime = user.getUuidTokenExpiration().minusMinutes(LocalDateTime.now().getMinute());
+            var shippingTime = user.getUuidTokenExpiration().minusMinutes(LocalDateTime.now().getMinute()).getMinute();
             throw new BusinnesRuleException("O Token não expirou, aguarde "+shippingTime+" minutos para poder reenviar o código!");
         }
 

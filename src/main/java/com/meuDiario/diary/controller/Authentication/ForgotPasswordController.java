@@ -27,7 +27,7 @@ public class ForgotPasswordController {
         return FORM_FORGOT_PASSWORD_PAGE;
     }
     @PostMapping
-    public String changePassword(@RequestParam("code") String code, @ModelAttribute("NewPasswordDTO") @Valid NewPasswordDTO dados,
+    public String changePassword(@RequestParam("code") String code, @ModelAttribute("dados") @Valid NewPasswordDTO dados,
                                     Model model, BindingResult result){
         if(result.hasErrors()){
             model.addAttribute("dados", dados);

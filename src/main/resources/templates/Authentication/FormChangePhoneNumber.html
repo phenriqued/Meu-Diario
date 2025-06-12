@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  lang="pt-br"
+       xmlns:th="http://thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{template.html}">
+<head>
+  <link rel="stylesheet" href="../../static/css/styleLogin.css" th:href="@{/css/styleLogin.css}">
+  <title>Alterar número de celular</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="login-page">
+    <div class="login-container">
+      <h2>Alterar a número</h2>
+      <form th:action="@{/alterar-numero}" method="post" th:object="${phoneNumberData}">
+        <input type="hidden" name="code" th:value="${param.code}">
+
+        <div class="alert alert-danger text-center text-uppercase" th:if="${param.error != null}">
+          <p>
+            <strong>Número inválido!</strong>
+          </p>
+        </div>
+
+        <div class="form-group">
+          <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Digite o número de Celular" required>
+          <div class="alert alert-danger text-center text-uppercase" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="phoneNumberConfirmation" name="phoneNumberConfirmation" placeholder="Confirme o número de Celular" required>
+          <div class="alert alert-danger text-center text-uppercase" th:if="${#fields.hasErrors('phoneNumberConfirmation')}" th:errors="*{phoneNumberConfirmation}"></div>
+        </div>
+
+        <button class="login-button" title="Salvar">
+          Salvar
+        </button>
+      </form>
+    </div>
+  </div>
+  <script src="/script/scriptLogin.js"></script>
+</div>
+</body>
+</html>

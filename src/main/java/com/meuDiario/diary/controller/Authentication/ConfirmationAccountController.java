@@ -40,6 +40,7 @@ public class ConfirmationAccountController {
             }catch (UsernameNotFoundException | BusinnesRuleException e){
                 model.addAttribute("erroToken", e.getMessage());
                 model.addAttribute("nickname", nickname);
+                model.addAttribute("activation", activation);
                 return CONFIRMATION_ACCOUNT_PAGE;
             }
         }
@@ -49,20 +50,24 @@ public class ConfirmationAccountController {
         }catch (UsernameNotFoundException | BusinnesRuleException e){
             model.addAttribute("erroToken", e.getMessage());
             model.addAttribute("nickname", nickname);
+            model.addAttribute("activation", activation);
             return CONFIRMATION_ACCOUNT_PAGE;
         }
     }
 
     @GetMapping("/resend-code")
-    public String resendTokenActivation(@RequestParam(name = "nickname") String nickname, Model model){
+    public String resendTokenActivation(@RequestParam(name = "nickname") String nickname,
+                                        @RequestParam(value = "activation") Boolean activation, Model model){
         try{
             model.addAttribute("nickname", nickname);
-            model.addAttribute("resendToken", "O token foi enviado novamente!");
+            model.addAttribute("activation", activation);
             service.resendToken(nickname);
+            model.addAttribute("resendToken", "O token foi enviado novamente!");
             return CONFIRMATION_ACCOUNT_PAGE;
         }catch (BusinnesRuleException exception){
             model.addAttribute("erro",exception.getMessage());
             model.addAttribute("nickname", nickname);
+            model.addAttribute("activation", activation);
             return CONFIRMATION_ACCOUNT_PAGE;
         }
     }
