@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html  lang="pt-br"
+       xmlns:th="http://thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{template.html}">
+<head>
+    <link rel="stylesheet" href="../../static/css/styleLogin.css" th:href="@{/css/styleLogin.css}">
+    <title>Ativar Conta</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="login-page">
+        <div class="login-container">
+            <h2>Digite o número de celular</h2>
+            <form id="loginForm" method="post" action="#" th:action="@{/verificar-numero}" th:object="${number}">
+                <div class="alert alert-danger text-center text-uppercase" th:if="${erro != null}">
+                    <p>
+                        <strong th:text="${erro}"></strong>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Digite o número de Celular" required>
+                    <div class="alert alert-danger text-center text-uppercase" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+                </div>
+                <button type="submit" class="login-button">Enviar código</button>
+            </form>
+            <div class="links">
+                <a  th:href="@{/signIn}">Fazer Login.</a>
+            </div>
+        </div>
+    </div>
+    <script src="/script/scriptLogin.js"></script>
+</div>
+</body>
+</html>

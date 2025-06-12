@@ -17,4 +17,8 @@ public class Codification {
         return encoder.encode(password);
     }
 
+    public static Boolean matches(String rawPassword, String encodedPassword){
+        return encoder.matches(rawPassword, encodedPassword);
+    }
+
 }

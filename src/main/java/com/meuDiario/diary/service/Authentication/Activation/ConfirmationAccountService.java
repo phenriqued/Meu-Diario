@@ -17,12 +17,12 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Service
-public class ActivationService {
+public class ConfirmationAccountService {
 
     private final UserRepository userRepository;
     private final SmsRequestService smsRequestService;
 
-    public ActivationService(UserRepository userRepository, SmsRequestService smsRequestService) {
+    public ConfirmationAccountService(UserRepository userRepository, SmsRequestService smsRequestService) {
         this.userRepository = userRepository;
         this.smsRequestService = smsRequestService;
     }
@@ -32,15 +32,23 @@ public class ActivationService {
         User userByToken = userRepository.findByUuidTokenActivation(tokenActivation)
                 .orElseThrow(() -> new UsernameNotFoundException("Token inexistente!"));
 
-        if(!user.getUuidTokenActivation().equals(userByToken.getUuidTokenActivation()))
-            throw new BusinnesRuleException("O Token está inválido!");
-        if(userByToken.getUuidTokenExpiration().isBefore(LocalDateTime.now()))
-            throw new BusinnesRuleException("O Token expirou, clique em enviar um novo token!");
+        verifyTokenAndExpiration(user, userByToken);
 
         user.setEnable();
         user.clearTokenActivation();
         userRepository.save(user);
         logarUser(new UserAuthentication(user), request);
+    }
+
+    public String activeAccount(String nickname, String token) {
+        User user = findByNickname(nickname, "Usuário não encontrado, tente Login fazer o novamente");
+        User userByToken = userRepository.findByUuidTokenActivation(token)
+                .orElseThrow(() -> new UsernameNotFoundException("Token inexistente!"));
+        verifyTokenAndExpiration(user, userByToken);
+        user.clearTokenActivation();
+        user.setTokenPassword();
+        userRepository.save(user);
+        return user.getTokenPassword();
     }
 
     public void resendToken(String nickname) {
@@ -56,7 +64,6 @@ public class ActivationService {
         user.clearTokenActivation();
         user.setUuidTokenActivation();
         smsRequestService.sendTextSms(user);
-        System.out.println("\nNovo Token de ativação: "+user.getUuidTokenActivation()+"\n");
         userRepository.save(user);
     }
 
@@ -74,4 +81,13 @@ public class ActivationService {
         return userRepository.findByNickname(nickname)
                 .orElseThrow(() -> new UsernameNotFoundException(message));
     }
+
+    private void verifyTokenAndExpiration(User user, User userByToken){
+        if(!user.getUuidTokenActivation().equals(userByToken.getUuidTokenActivation()))
+            throw new BusinnesRuleException("O Token está inválido!");
+        if(userByToken.getUuidTokenExpiration().isBefore(LocalDateTime.now()))
+            throw new BusinnesRuleException("O Token expirou, clique em enviar um novo token!");
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package com.meuDiario.diary.dto.login;
+package com.meuDiario.diary.dto.login.SignUp;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

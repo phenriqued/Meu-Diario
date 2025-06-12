@@ -1,0 +1,2 @@
+ALTER TABLE tb_user
+ADD COLUMN token_password VARCHAR(36) UNIQUE;

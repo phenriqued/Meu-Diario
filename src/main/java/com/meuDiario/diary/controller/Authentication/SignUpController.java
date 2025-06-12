@@ -1,6 +1,6 @@
 package com.meuDiario.diary.controller.Authentication;
 
-import com.meuDiario.diary.dto.login.SignUpUserDTO;
+import com.meuDiario.diary.dto.login.SignUp.SignUpUserDTO;
 import com.meuDiario.diary.service.Authentication.signUp.SignUpService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +27,12 @@ public class SignUpController {
     }
 
     @PostMapping
-    public String createUser(@ModelAttribute("SignUpUserDTO") @Valid SignUpUserDTO dados, BindingResult result, Model model){
+    public String createUser(@ModelAttribute("dados") @Valid SignUpUserDTO dados, BindingResult result, Model model){
         if(result.hasErrors()){
             model.addAttribute("dados", dados);
             return PAGE_LOGIN;
         }
         var user = service.createUser(dados);
-        return "redirect:AtivarConta?nickname="+user.getNickname();
+        return "redirect:ConfirmationAccount?nickname="+user.getNickname()+"&activation="+ !user.getIsEnable();
     }
-
-
 }

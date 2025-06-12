@@ -1,6 +1,6 @@
 package com.meuDiario.diary.service.Authentication.signUp;
 
-import com.meuDiario.diary.dto.login.SignUpUserDTO;
+import com.meuDiario.diary.dto.login.SignUp.SignUpUserDTO;
 import com.meuDiario.diary.model.User.User;
 import com.meuDiario.diary.repository.UserRepository.UserRepository;
 import com.meuDiario.diary.service.SmsService.SmsRequestService;
@@ -20,9 +20,8 @@ public class SignUpService {
 
     public User createUser(SignUpUserDTO dto){
         var user = repository.save(new User(dto));
-        smsRequestService.sendTextSms(user);
+        //smsRequestService.sendTextSms(user);
+        System.out.println("\nO CÓDIGO DE ATIVAÇÃO: "+user.getUuidTokenActivation()+"\n");
         return user;
     }
-
-
 }

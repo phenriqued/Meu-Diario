@@ -19,6 +19,15 @@ public class SmsRequestService {
                 """, user.getNickname(), user.getUuidTokenActivation());
         smsService.sendSMS(verifyNumber(user.getPhoneNumber()), message);
     }
+    public void sendChangePasswordTextSms(User user){
+        String message = gerarMessage(
+                """
+                Olá [[nickname]]. O seu código do \"Meu Diário\" para alterar a senha é: [[token]]
+                
+                Não Compartilhe o código para NINGUÉM!
+                """, user.getNickname(), user.getUuidTokenActivation());
+        smsService.sendSMS(verifyNumber(user.getPhoneNumber()), message);
+    }
 
     private String gerarMessage(String template, String nickname, String token){
         return template.replace("[[nickname]]", nickname).replace("[[token]]", token);
