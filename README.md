@@ -6,7 +6,7 @@
 
 <h1>My Diary 📝</h1>
 <p> 
-  O projeto <strong>My Diary</strong> é uma aplicação web completa, desenvolvida com o objetivo de fornecer aos usuários uma plataforma pessoal para registrar seus pensamentos e experiências diárias.
+  O projeto <strong>My Diary</strong> é uma aplicação web Stateful, desenvolvida com o objetivo de fornecer aos usuários uma plataforma pessoal para registrar seus pensamentos e experiências diárias.
   
   <strong>Funcionalidades Principais:</strong>
   <ul>
