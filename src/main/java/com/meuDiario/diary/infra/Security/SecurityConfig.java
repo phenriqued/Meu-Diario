@@ -24,7 +24,6 @@ public class SecurityConfig {
                                 .requestMatchers("/signIn", "/signUp", "/verificar-numero/**", "/ConfirmationAccount/**","/esqueci-minha-senha/**").permitAll()
                                 .requestMatchers("/home", "/HelloWorld").permitAll()
                                 .requestMatchers("/css/**", "/script/**", "/image/**").permitAll()
-                                .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(
